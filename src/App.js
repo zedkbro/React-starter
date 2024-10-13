@@ -5,12 +5,10 @@ import Login from "./Login";
 import Signup from "./Signup";
 
 const isAuth = false;
-
 function ToggleAuth() {
   if (isAuth) {
     return <Login />;
   }
-
   return <Signup />;
 }
 function App() {
@@ -25,18 +23,19 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
+            <Login login="HI" />
             <ToggleAuth />
           </a>
         </header>
-
         <div>
-          <form onSumbit="" className="login-form">
+          <form className="login-form">
             <input type="text" />
             <input type="text" />
             <input type="submit" value="Submit" id="submit" />
           </form>
         </div>
       </div>
+      <h1>{isAuth ? "ICON" : "Zed"}</h1>
     </>
   );
 }
