@@ -5,7 +5,6 @@ import Login from "./Login";
 import Signup from "./Signup";
 
 const isAuth = false;
-const cars = ["Ford", "Tesla"];
 function ToggleAuth() {
   if (isAuth) {
     return <Login />;
@@ -24,7 +23,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Login login="HI" />
+            <Login login="HI" link="https://www.mit.edu"/>
             <ToggleAuth />
           </a>
         </header>
@@ -37,11 +36,6 @@ function App() {
         </div>
       </div>
       <h1>{isAuth ? "ICON" : "Zed"}</h1>
-      <p>
-        {cars.map((car, i) => (
-          <h3 key={i}>{car}</h3>
-        ))}
-      </p>
     </>
   );
 }
