@@ -1,6 +1,6 @@
 function Login(props) {
-  function clickClick(event) {
-    alert(event.type);
+  function clickClick(a, event) {
+    alert(a);
   }
   return (
     <>
@@ -9,7 +9,7 @@ function Login(props) {
         <h3>{props.login}</h3>
         <button>Hi</button>
         <div>
-          <button onClick={(event) => clickClick(event)}>Login</button>
+          <button onClick={(event) => clickClick(5, event)}>Login</button>
         </div>
       </div>
     </>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -15,6 +17,11 @@ function ToggleAuth() {
 function App() {
   const page = "Login component";
   const cars = ["Tesla", "Nexus", "Bugati"];
+  const [username, setUsername] = useState("");
+  function handleForm(event) {
+    event.preventDefault();
+    alert(username);
+  }
   return (
     <>
       <div className="App">
@@ -31,10 +38,19 @@ function App() {
           </a>
         </header>
         <div>
-          <form className="login-form">
-            <input type="text" />
-            <input type="text" />
-            <input type="submit" value="Submit" id="submit" />
+          <p>{username}</p>
+          <form className="login-form" onSubmit={handleForm}>
+            <label for="username">Username:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <label for="password">Password:</label>
+            <input type="password" />
+            <button type="submit" id="submit">
+              Submit
+            </button>
           </form>
         </div>
 
