@@ -11,6 +11,8 @@ function ToggleAuth() {
   }
   return <Signup />;
 }
+
+
 function App() {
   return (
     <>

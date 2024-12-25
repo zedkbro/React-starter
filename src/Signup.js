@@ -1,9 +1,9 @@
-const signup = () => {
+function signup() {
   return (
     <>
-      <div>Sign Up</div>
+      <h1>Hi, I am progress.</h1>
     </>
   );
-};
+}
 
 export default signup;
