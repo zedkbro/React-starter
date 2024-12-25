@@ -1,21 +1,16 @@
 function Login(props) {
-  const Login = (x) => {
-    // event.preventDefault();
-    alert(x);
-  };
 
-  const logHi = (event) => {
-    event.preventDefault();
-
-    console.log("HI");
-  };
+  function clickClick(event){
+    alert(event.type)
+  }
   return (
     <>
       <div>
         <h2> {props.link}</h2>
-        <button onClick={(event) => logHi(event)}>Hi</button>
+        <h3>{props.login}</h3>
+        <button>Hi</button>
         <div>
-          <button onClick={() => Login(5)}>Login</button>
+          <button onClick={()=>clickClick(event)}>Login</button>
         </div>
       </div>
     </>

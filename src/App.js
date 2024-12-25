@@ -12,8 +12,8 @@ function ToggleAuth() {
   return <Signup />;
 }
 
-
 function App() {
+  const page = "Login";
   return (
     <>
       <div className="App">
@@ -25,7 +25,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Login login="HI" link="https://www.mit.edu"/>
+            <Login login={page} link="https://www.mit.edu" />
             <ToggleAuth />
           </a>
         </header>
