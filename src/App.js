@@ -13,7 +13,8 @@ function ToggleAuth() {
 }
 
 function App() {
-  const page = "Login";
+  const page = "Login component";
+  const cars = ["Tesla", "Nexus", "Bugati"];
   return (
     <>
       <div className="App">
@@ -36,6 +37,14 @@ function App() {
             <input type="submit" value="Submit" id="submit" />
           </form>
         </div>
+
+        <ul>
+          <li>
+            {cars.map((car) => {
+              return car;
+            })}
+          </li>
+        </ul>
       </div>
       <h1>{isAuth ? "ICON" : "Zed"}</h1>
     </>
