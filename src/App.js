@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./Login";
 
-import styles from "./my-module.style.css";
+import styles from "./my-style.module.css";
 
 const isAuth = true;
 
@@ -23,7 +23,7 @@ function App() {
       <div className="App">
         <header className="App-header">
           <nav className={styles.bigred}>
-            <ul>
+            <ul style={{ display: "flex", justifyContent: "center" }}>
               <li>
                 <Link to="/signup" className={styles.bgred}>
                   Signup
