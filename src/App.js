@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./Login";
 
+import styles from "./my-module.style.css";
+
 const isAuth = true;
 
 function App() {
@@ -20,10 +22,16 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <nav>
+          <nav className={styles.bigred}>
             <ul>
-              <li><Link to="/signup">Signup</Link></li>
-              <li><Link to="/login">Login</Link></li>
+              <li>
+                <Link to="/signup" className={styles.bgred}>
+                  Signup
+                </Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
             </ul>
           </nav>
         </header>

@@ -1,3 +1,7 @@
+// memo sips re-rendering a component if its props are not changed
+
+import { memo } from "react";
+
 function Login(props) {
   function clickClick(a, event) {
     alert(a);
@@ -16,4 +20,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default memo(Login);
