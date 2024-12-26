@@ -17,10 +17,16 @@ function ToggleAuth() {
 function App() {
   const page = "Login component";
   const cars = ["Tesla", "Nexus", "Bugati"];
-  const [username, setUsername] = useState("");
+  let [form, setForm] = useState({});
   function handleForm(event) {
     event.preventDefault();
-    alert(username);
+    alert(form.username);
+  }
+
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    setForm((values) => ({ ...values, [name]: value }));
   }
   return (
     <>
@@ -38,16 +44,17 @@ function App() {
           </a>
         </header>
         <div>
-          <p>{username}</p>
+          <p>{form.username}</p>
           <form className="login-form" onSubmit={handleForm}>
             <label for="username">Username:</label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              name="username"
+              value={form.username || ""}
+              onChange={handleChange}
             />
             <label for="password">Password:</label>
-            <input type="password" />
+            <input type="password" name="password" onChange={handleChange} />
             <button type="submit" id="submit">
               Submit
             </button>
