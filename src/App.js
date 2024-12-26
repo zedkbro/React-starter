@@ -1,76 +1,73 @@
 import { useState } from "react";
-
-import logo from "./logo.svg";
-import "./App.css";
-
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Signup from "./pages/Signup";
 import Login from "./Login";
-import Signup from "./Signup";
 
-const isAuth = false;
-function ToggleAuth() {
-  if (isAuth) {
-    return <Login />;
-  }
-  return <Signup />;
-}
+const isAuth = true;
 
 function App() {
-  const page = "Login component";
-  const cars = ["Tesla", "Nexus", "Bugati"];
-  let [form, setForm] = useState({});
+  const cars = ["Tesla", "Nexus", "Bugatti"];
+  const [form, setForm] = useState({});
   function handleForm(event) {
     event.preventDefault();
-    alert(form.username);
+    alert(`Username: ${form.username}`);
   }
-
   function handleChange(event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    setForm((values) => ({ ...values, [name]: value }));
+    const { name, value } = event.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   }
   return (
-    <>
+    <BrowserRouter>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <a
-            className="App-link"
-            href="/login"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Login login={page} link="https://www.mit.edu" />
-            <ToggleAuth />
-          </a>
+          <nav>
+            <ul>
+              <li><Link to="/signup">Signup</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
+          </nav>
         </header>
+
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+
         <div>
-          <p>{form.username}</p>
+          <h2>Form Example</h2>
           <form className="login-form" onSubmit={handleForm}>
-            <label for="username">Username:</label>
+            <label htmlFor="username">Username:</label>
             <input
               type="text"
               name="username"
               value={form.username || ""}
               onChange={handleChange}
             />
-            <label for="password">Password:</label>
-            <input type="password" name="password" onChange={handleChange} />
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={form.password || ""}
+              onChange={handleChange}
+            />
             <button type="submit" id="submit">
               Submit
             </button>
           </form>
         </div>
 
-        <ul>
-          <li>
-            {cars.map((car) => {
-              return car;
-            })}
-          </li>
-        </ul>
+        <div>
+          <h2>Cars List</h2>
+          <ul>
+            {cars.map((car, index) => (
+              <li key={index}>{car}</li>
+            ))}
+          </ul>
+        </div>
+
+        <h1>{isAuth ? "Welcome Back!" : "Please Login"}</h1>
       </div>
-      <h1>{isAuth ? "ICON" : "Zed"}</h1>
-    </>
+    </BrowserRouter>
   );
 }
 
