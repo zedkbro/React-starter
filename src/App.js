@@ -51,13 +51,7 @@ function App() {
               value={form.username || ""}
               onChange={handleChange}
             />
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              name="password"
-              value={form.password || ""}
-              onChange={handleChange}
-            />
+             
             <button type="submit" id="submit">
               Submit
             </button>
