@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./Login";
@@ -18,10 +18,17 @@ function App() {
     const { name, value } = event.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
+  let [count, setCount] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  });
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
+          <h1>{count}</h1>
           <nav className={styles.bigred}>
             <ul style={{ display: "flex", justifyContent: "center" }}>
               <li>
@@ -51,7 +58,7 @@ function App() {
               value={form.username || ""}
               onChange={handleChange}
             />
-             
+
             <button type="submit" id="submit">
               Submit
             </button>
