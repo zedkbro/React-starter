@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext, useRef } from "react";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./Login";
@@ -10,6 +10,9 @@ const isAuth = true;
 function App() {
   const cars = ["Tesla", "Nexus", "Bugatti"];
   const [form, setForm] = useState({});
+  const [input, setInput] = useState("");
+  const inputElement = useRef("");
+
   function handleForm(event) {
     event.preventDefault();
     alert(`Username: ${form.username}`);
@@ -22,16 +25,15 @@ function App() {
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-  }, []); // <- add the count variable here
+    inputElement.current = input;
+  }, [input]); // <- add the input variable here
 
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
           <h1>{count}</h1>
+          {/* <p style={{ color: "red", "font-size": "48px" }}> {cnt.current}</p> */}
           <button onClick={() => setCount((c) => c + 1)}>+</button>
           <p>{calculation}</p>
           <nav className={styles.bigred}>
@@ -55,8 +57,15 @@ function App() {
 
         <div>
           <h2>Form Example</h2>
+          <p>{input}</p>
+          <p>{inputElement.current}</p>
           <form className="login-form" onSubmit={handleForm}>
             <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
             <input
               type="text"
               name="username"
