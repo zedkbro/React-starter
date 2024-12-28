@@ -19,16 +19,21 @@ function App() {
     setForm((prev) => ({ ...prev, [name]: value }));
   }
   let [count, setCount] = useState(0);
+  const [calculation, setCalculation] = useState(0);
+
   useEffect(() => {
     setTimeout(() => {
       setCount((count) => count + 1);
     }, 1000);
-  });
+  }, []); // <- add the count variable here
+
   return (
     <BrowserRouter>
       <div className="App">
         <header className="App-header">
           <h1>{count}</h1>
+          <button onClick={() => setCount((c) => c + 1)}>+</button>
+          <p>{calculation}</p>
           <nav className={styles.bigred}>
             <ul style={{ display: "flex", justifyContent: "center" }}>
               <li>
